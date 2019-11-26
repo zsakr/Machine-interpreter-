@@ -1,1 +1,1 @@
-# Machine-interpreter-
+The SM-275 is a new machine that is in the design phase right now. This project is a simulator for the machine, which will interpret instructions to test its design. The simulator will be written in C, and it should accept instructions in the assembly language of the SM-275, SMA.
