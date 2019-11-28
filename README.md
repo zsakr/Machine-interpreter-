@@ -20,7 +20,9 @@ The SM-275 is a new machine that is in the design phase right now. This project 
     COMP Rj,Rk. sets flags according the table below.
     QUIT. Quit the interpreter.
     
-# Condition     Zero Flag     Sign Flag
+# Condition Example
+    Condition     Zero Flag     Sign Flag  
+                  
     Rj. > Rk     
                     0           1  
     Rj. < Rk
