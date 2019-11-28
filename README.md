@@ -7,16 +7,19 @@ The SM-275 is a new machine that is in the design phase right now. This project 
   There are eight memory locations, M0…M7.
   There are three one-bit flag registers: ZF (zero flag), SF (sign flag), OF (overflow flag). They are set/cleared by all the arithmetic instructions below, as well as the COMP instruction. Note: given that R0 always contains the result of an arithmetic operation, in this case ZF and SF are set solely based on that value.
 # The instruction set is as follows:
+
     READ data, Mk. Input data is stored at Mk. OF set if out of range.
     WRITE Rk|Mk. Value stored at register or memory location is output.
     PRINTS. Print the current state of the machine (see sample output below).
     MOVE Rj|Mj, Rk|Mk. Value stored at first operand copied to second, except both cannot be memory locations. Example: MOVE M2, R1
+    
    ADD, SUB, MULT, DIV, MOD. These are all two-operand instructions. Each operand can be either a register or a memory location, except both cannot be memory locations. The result is always stored in R0. The order of operands for subtraction is “subtract arg1 from arg2” The order of both division operations is “arg1 div/mod arg2”. Examples:
 
     ADD R2, M1
     MOD M3, R1
     COMP Rj,Rk. sets flags according the table below.
     QUIT. Quit the interpreter.
+    
 # Condition
     Zero Flag
     Sign Flag
@@ -41,7 +44,7 @@ The ‘?’ character is for display purposes and represents uninitialized regis
 
 The interpreter should detect input errors such invalid instructions or instructions with the wrong number of arguments, or unacceptable arguments such as two memory locations where prohibited. However, the only error message is the ever-helpful “???”. It should accept references to registers and memory locations with either upper- or lower-case font, e.g. M2 or m2, and instructions should be case-insensitive as well. It should detect overflow either on input or as the result of calculation and set the overflow flag accordingly. After an overflow caused by calculation, the value of the result register R0 should be set to ‘?’. If an instruction is invoked and one of the arguments is undefined, then the result should be undefined. If there is an error in an instruction, the program should continue allowing the user to try again after seeing the ‘???’ output. 
 
-# Example run of the interepter 
+# Example run of the interpreter: 
 
     SM$ prints
     ?   ?  ?  ?  ? ? … ? 0   0  0
@@ -59,3 +62,5 @@ The interpreter should detect input errors such invalid instructions or instruct
     -6 17 ? ? 11 17 … ?  0  1  0
     -- -- -- -- -- -- -- -- -- --
     R0 R1 R2 R3 M0 M1 M7 ZF SF OF
+    SM$ quit
+    
