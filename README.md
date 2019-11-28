@@ -20,24 +20,20 @@ The SM-275 is a new machine that is in the design phase right now. This project 
     COMP Rj,Rk. sets flags according the table below.
     QUIT. Quit the interpreter.
     
-# Condition
-    Zero Flag
-    Sign Flag
-    Rj. > Rk
-    0
-    1
+# Condition     Zero Flag     Sign Flag
+    Rj. > Rk     
+                    0           1  
     Rj. < Rk
-    0
-    0
+                    0           1   
     Rj. == Rk
-    1
-    0
+                    1           0
+                    
 All instructions and operands are to be case-insensitive. The first operand of all two-operand instructions must be followed by a comma. Rather than detailed messages, the interpreter can just complain of bad input with “???”.
 
 
 The simulator will be an interpreted (rather than compiled) system, and it should be set up for keyboard rather than file input. At the prompt, the user will enter an instruction in SM-275 Assembly Language (hereafter SMA). The machine will immediately update its state or perform any indicated output. The output of a WRITE instruction will simply be an integer value in decimal and a newline character. The output of a PRINTS statement should look like this:
 
-      33 12 ? 0 ? ? … 43 0 1 0
+      33 12 ? 0 ? ? …  43   0  1  0
       -- -- -- -- -- -- -- -- -- --
       R0 R1 R2 R3 M0 M1 M7 ZF SF OF
 The ‘?’ character is for display purposes and represents uninitialized registers or memory locations. Note: since registers and memory locations generally will be storing small integers, you won’t store ‘?’ in them. Instead, choose a value outside the range of what the simulated machine can understand (such as 128), and use it to represent ‘?’. Then when displaying, your code will read 128 and print ‘?’. The flag registers are assumed to be initialized to 0.
